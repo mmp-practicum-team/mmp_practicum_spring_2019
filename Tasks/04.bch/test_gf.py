@@ -3,6 +3,7 @@ import numpy as np
 import gf
 from numpy.testing import assert_equal
 
+
 def test_primpoly():
     primpoly = 11
     right_primpoly = np.array([[7, 2],
@@ -13,7 +14,6 @@ def test_primpoly():
                                [4, 5],
                                [5, 1]])
     assert_equal(right_primpoly, gf.gen_pow_matrix(primpoly))
-    
 
     
 def test_add():
@@ -36,10 +36,10 @@ def test_sum():
     X = np.array([[1, 5],
               [17, 9],
               [23, 5]])
-    right_sum_1 = np.array([[7, 9]])
-    right_sum_2 = np.array([[ 4],
-                            [24],
-                            [18]])
+    right_sum_1 = np.array([7, 9])
+    right_sum_2 = np.array([4,
+                            24,
+                            18])
     assert_equal(right_sum_1, gf.sum(X, axis=0))
     assert_equal(right_sum_2, gf.sum(X, axis=1))
     
@@ -171,9 +171,10 @@ def test_euclid():
     p2 = np.array([31, 23, 30, 31, 11,  9])
     right_answer = (np.array([24,  8, 11]),
                     np.array([ 1, 23, 14]),
-                    np.array([ 0,  0,  0,  0, 19, 14,  2, 21,  7, 12, 11]))
-    max_deg = 3
+                    np.array([ 19, 14,  2, 21,  7, 12, 11]))
+    max_deg = 2
     result = gf.euclid(p1, p2, pm, max_deg=max_deg)
     assert_equal(right_answer[0], result[0])
     assert_equal(right_answer[1], result[1])
     assert_equal(right_answer[2], result[2])
+
